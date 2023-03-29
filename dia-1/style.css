@@ -1,0 +1,64 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	padding: 1rem;
+}
+
+main {
+	max-width: 1200px;
+}
+
+/* todos los hijos directos de details menos summary */
+details > *:not(summary) {
+	margin-left: 2rem;
+}
+
+/* los summary de los detail que tengan open */
+details[open] > summary {
+	background-color: black;
+	color: white;
+}
+
+details[open] ul {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+h2,
+h3,
+h4 {
+	font-style: italic;
+	text-decoration: underline 2px solid black;
+}
+
+h3,
+h4,
+p {
+	margin-bottom: 0.5rem;
+}
+
+li {
+	margin-left: 1rem;
+}
+
+code {
+	background-color: lightgrey;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	/* conservar los saltos de linea*/
+	white-space: pre-wrap;
+	/* conservar los espacios */
+	white-space: pre-line;
+	/* si alguna palabra es muy larga que no se salga del contenedor */
+	overflow-wrap: break-word;
+}
+img {
+	width: 80%;
+	max-width: 1000px;
+}

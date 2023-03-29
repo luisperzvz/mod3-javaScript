@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>JavaScript </title>
+</head>
+<body>
+  <header>
+    <h1>Semana 4 / Día 1</h1>
+  </header>
+  <main>
+    <article class='introduccion'>
+      <details id='introduccion'>
+        <summary>Introducción</summary>
+        <h2>Introducción</h2>
+        <section class='analogia' >
+          <details id='analogia'>
+            <summary>Analogía</summary>
+            <h3>Analogía hacia el mundo de la construcción</h3>
+            <p>HTML: Da la estructura. Hacemos el esqueleto de un edificio (vigas, pilares, forjados)</p>
+            <p>CSS: Da la apariencia. Pintamos, azulejamos baños, colocamos suelos, molduras, etc.</p>
+            <p>JavaScript: Da la funcionalidad. Puertas, ventanas, armarios, electricidad, agua, electrodomesticos</p>
+          </details>
+        </section>
+        <section class='porque' >
+          <details id='porque'>
+            <summary>¿Porque?</summary>
+            <h3>¿Porque JavaScript?</h3>
+            <p>El objetivo del Bootcamp es que aprendais a hacer el BackEnd y el FrontEnd de las aplicaciones, y con un solo lenguaje vamos a poder hacerlo.</p>
+            <p>JavaScript nace para darle funcionalidad e interactividad a las paginas web.</p>
+            <p>Google tiene un motor que ejecuta el JavaScript en Chrome que se llama V8 que es el motor de JavaScript mas rapido del mundo y lo usan otros navegadores como Opera, Safari, Edge, etc.</p>
+            <p>Google liberó el código de V8 en 2008 y desde entonces se ha convertido en el motor de JavaScript mas usado</p>
+            <p>A raiz de esto, <strong>Node JS</strong> nace para poder ejecutar JavaScript en el lado del servidor.</p>
+            <p>JavaScript es el lenguaje mas usado en el mundo.</p>
+            <a href="https://survey.stackoverflow.co/2022/#most-popular-technologies-language" target='blank'>
+              <img src='https://i.blogs.es/a6ae44/captura-de-pantalla-2022-12-26-a-las-10.46.08/1366_2000.webp' alt='Clasificación Lenguajes de programación'>
+            </a>
+            <p>Las bases de programación que vais a aprender en este Bootcamp como variables, funciones, bucles, condicionales, arrays, objetos, clases, ... son las mismas que se usan en otros lenguajes de programación como Java, C, C++, Python, etc. Lo que cambia es la sintaxis.</p>
+            <!-- Revisar en consola si teneis instalado NodeJS
+            node --version 
+            si no lo teneis id a codingrooms a
+            Pre-bootcamp/Entorno de trabajo-->
+          </details>
+        </section>
+        <section class="navegador">
+          <details id='navegador'>
+            <summary>Navegador</summary>
+            <h3>Navegador</h3>
+            <ul>
+              <li>
+                <h4>Motor JavaScript</h4>
+                <p>El código es revisado por un analizador que lee nuestro código línea a línea y revisa que la sintaxis es correcta.</p>
+                <p>Este analizador conoce todas las reglas de JavaScript y puede detectar posibles errores. Si este fuera el caso nos devolvería un error y la ejecución se detendría.</p>
+                <p>Si todo es correcto el analizador creará una estructura de datos conocida como <strong>Árbol de Sintaxis Abstracta</strong> (Abstract Syntax Tree), que luego se traduce al código de la máquina.</p>
+                <p>Este nuevo código ya no es código JavaScript, sino una serie de instrucciones que pueden ser ejecutadas directamente por el procesador de nuestro ordenador. Es en este momento cuando nuestro código se ejecuta y se pone en funcionamiento.</p>
+              </li>
+              <li>
+                <h4>Contexto de Ejecución</h4>
+                <p>El contexto de ejecución es el entorno donde se ejecuta el código JavaScript. Este contexto puede ser el navegador, NodeJS, etc.</p>
+                <p>Ese entorno es llamado <strong>contexto de ejecución</strong> (execution context). Caja que almacena variables y funciones, aquí se evalua y ejecuta el código.</p>
+                <p>El contexto de ejecución por defecto es el contexto global. Aquí se ejecuta todo el código que no se encuentre dentro de una función.</p>
+                <p>Cuando llamamos a una función se crea un nuevo contexto de ejecución que es situado encima del contexto actual formando la llamada pila de ejecución o execution stack.</p>
+                <p>Cada vez que un nuevo contexto de ejecución se crea, este se agrega a la parte superior de la pila de ejecución.</p>
+                <p>El navegador siempre ejecutará el contexto de ejecución actual, el que esté en la cima de la pila de ejecución.</p>
+                <p>El contexto de ejecución se rige por el método LIFO(<small>Last In First Out</small>)  , que significa “último en entrar, primero en salir”</p>
+                <p>Cuando el contexto de ejecución actual termina, se elimina de la pila de ejecución y el navegador ejecuta el contexto de ejecución que se encuentra debajo de él.</p>
+                <p>Ejemplo</p>
+                <code>
+                  'use strict';
+
+                  const myVariable = 'Yo estoy declarada en el contexto global.';
+                  console.log('Contexto Global: estamos en el contexto global');
+
+                  function first() {
+                  console.log('Contexto Local 1: estamos dentro "first()"');
+                  second();
+                  console.log('Contexto Local 1: otra vez dentro de "first()"');
+                  }
+
+                  function second() {
+                  console.log('Contexto Local 2: dentro de "second()"');
+                  third();
+                  console.log('Contexto Local 2: otra vez dentro de "second()"');
+                  }
+
+                  function third() {
+                  console.log('Contexto Local 3: dentro de "third()"');
+                  }
+
+                  first();
+
+                  console.log('Contexto Global: regresamos al contexto global');
+                </code>
+                <p>El resultado de la ejecución del código anterior es el siguiente:</p>
+                <img src="./img/pila1.jpg" alt="pila de ejecución 1" />
+                <img src="./img/pila2.jpg" alt="pila de ejecución 2" />
+                <code>
+                  Contexto Global: estamos en el contexto global
+                  Contexto Local 1: estamos dentro "first()"
+                  Contexto Local 2: dentro de "second()"
+                  Contexto Local 3: dentro de "third()"
+                  Contexto Local 2: otra vez dentro de "second()"
+                  Contexto Local 1: otra vez dentro de "first()"
+                  Contexto Global: regresamos al contexto global
+                </code>
+              </li>
+            </ul>
+
+          </details>
+        </section>
+        <section class='caracteristicas'>
+          <details id='caracteristicas'>
+            <summary>Características</summary>
+            <h3>Características</h3>
+            <p>JavaScript principalmente es un lenguaje del lado del cliente, se descarga en sus dispositivos y se procesa allí, pero también se usa en el lado del servidor como vais a aprender en el modulo de Node JS</p>
+            <p>JavaScript es un lenguaje de programación interpretado, es decir, no necesita ser compilado para ejecutarse. Se ejecuta directamente en el navegador.</p>
+            <p>Un Lenguaje interpretado es aquel que se ejecuta directamente sin necesidad de ser compilado.</p>
+            <p>Un Lenguaje compilado es aquel que se ejecuta a través de un programa que traduce el código fuente a código máquina (binario) para que pueda ser ejecutado por la máquina.</p>
+            <p>JavaScript es un lenguaje de programación orientado a objetos, es decir, que permite la creación de objetos y la manipulación de estos.</p>
+            <p>JavaScript es un lenguaje de programación de tipado devil y dinámico, es decir, que no es necesario declarar el tipo de dato de las variables. El tipo de dato se infiere en tiempo de ejecución. En otros lenguajes como Java, C o C++ es necesario declarar el tipo de dato de las variables cuando se crean.</p>
+          </details>
+        </section>
+        <section class='elementos'>
+          <details id='elementos'>
+            <summary>Elementos JS</summary>
+            <h3>Principales elementos de JavaScript</h3>
+            <ol>
+              <li>
+                <h4>Variables:</h4>
+                <p>Tambien se les puede llamar identificadores. Contenedores para valores que se pueden cambiar a lo largo del tiempo (mutables) o no (inmutables). Se declaran con la palabra 		clave <strong>var</strong>, <strong>let</strong> o <strong>const</strong>.  </p>
+                <p><strong>var</strong> está obsoleto y no se debe usar porque no es seguro, las variables declaradas con var pueden ser redeclaradas y reasignadas.</p>
+                <p><strong>let</strong> es la forma correcta de declarar variables en JavaScript. Las variables declaradas con let pueden ser reasignadas pero no redeclaradas.</p>
+                <p><strong>const</strong> es la forma correcta de declarar variables inmutables en JavaScript. Las variables declaradas con const no pueden ser reasignadas ni redeclaradas.</p>
+              </li>
+              <li>
+                <h4>Valores</h4>
+                <p>Los valores son los datos que se almacenan en las <strong>variables</strong>. Los valores pueden ser de tipo <strong>primitivo</strong> o de tipo <strong>objeto</strong>.</p>
+                <p>Los valores de tipo <strong>primitivo</strong> son los siguientes: <strong>number</strong>, <strong>string</strong>, <strong>boolean</strong>, <strong>null</strong> y <strong>undefined</strong>.</p>
+                <p>Los valores de tipo <strong>objeto</strong> son los siguientes: <strong>object</strong>, <strong>array</strong>, <strong>function</strong>, <strong>date</strong>, <strong>regexp</strong>, <strong>error</strong>, etc.</p>
+                <p>Los valores de tipo <strong>primitivo</strong> son inmutables, es decir, no se pueden cambiar una vez creados ya que se almacenan en la pila de memoria.</p>
+                <p>Los valores de tipo <strong>objeto</strong> son mutables, es decir, se pueden cambiar una vez creados ya que se almacenan en la pila de memoria.</p>
+              </li>
+              <li>
+                <h4>Operadores</h4>
+                <p>Los operadores son símbolos que se utilizan para realizar operaciones matemáticas, lógicas, de asignación, etc.</p>
+                <p>Operadores aritméticos: <strong>+</strong>, <strong>-</strong>, <strong>*</strong>, <strong>/</strong>, <strong>%</strong>, <strong>**</strong>,<strong>++</strong>, <strong>--</strong></p>
+                <p>Operadores de asignación: <strong>=</strong>, <strong>+=</strong>, <strong>-=</strong>, <strong>*=</strong>, <strong>/=</strong>, <strong>%=</strong>, <strong>**=</strong></p>
+                <p>Operadores de comparación: <strong>==</strong>, <strong>!=</strong>,<strong>===</strong>, <strong>!==</strong>, <strong>></strong>, <strong>>=</strong>, <strong><</strong>, <strong><=</strong></p>
+                <p>Operadores lógicos: <strong>&&</strong>, <strong>||</strong>, <strong>!</strong></p>
+                <p>Operadores de cadena: <strong>+</strong>, <strong>+=</strong></p>
+                <p>Operadores de condición ternaria: <strong>?</strong>, <strong>:</strong></p>
+              </li>
+              <li>
+                <h4>Expresiones</h4>
+                <p>Las expresiones son combinaciones de <strong>valores</strong>, <strong>variables</strong> y <strong>operadores</strong> que se evalúan a un <strong>valor</strong>.</p>
+              </li>
+              <li>
+                <h4>Funciones</h4>
+                <p>Las funciones son bloques de código que se pueden ejecutar varias veces. Las funciones se declaran con la palabra clave <strong>function</strong> y se invocan con los paréntesis <strong>()</strong>.</p>
+                <p>Utilizan <strong>parametros</strong> (si los recibe) y mediante un conjunto de <strong>expresiones</strong> nos devuelve un valor a traves de la palabra reservada <strong>return</strong></p>
+              </li>
+              <li>
+                <h4>Condicionales</h4>
+                <p>Los condicionales son estructuras de control que nos permiten ejecutar un bloque de código si se cumple una condición.</p>
+                <p>Los condicionales más utilizados son los siguientes: <strong>if</strong>, <strong>else</strong>, <strong>else if</strong>, <strong>switch</strong>, <strong>case</strong>, <strong>default</strong>, <strong>while</strong>, <strong>do while</strong>, <strong>for</strong>, <strong>for in</strong>, <strong>for of</strong>, etc.</p>
+              </li>
+              <li>
+                <h4>Objetos</h4>
+                <p>Los objetos son una colección de propiedades, y una propiedad es una asociación entre un nombre (o clave) y un valor. Un valor de propiedad puede ser una función, que se denomina método del objeto. En JavaScript, casi "todo" es un objeto.</p>
+              </li>
+              <li>
+                <h4>Arrays</h4>
+                <p>Los arrays son una estructura de datos que nos permite almacenar varios valores en una sola variable. Los arrays se declaran con corchetes <strong>[]</strong> y se accede a sus elementos mediante su posición, que empieza en 0.</p>
+              </li>
+              <li>
+                <h4>Eventos</h4>
+                <p>Los eventos son acciones que se producen en el navegador y que podemos capturar con JavaScript. Los eventos más utilizados son los siguientes: <strong>click</strong>, <strong>mouseover</strong>, <strong>mouseout</strong>, <strong>keydown</strong>, <strong>keyup</strong>, <strong>keypress</strong>, <strong>load</strong>, <strong>unload</strong>, <strong>resize</strong>, <strong>scroll</strong>, <strong>change</strong>, <strong>submit</strong>, <strong>focus</strong>, <strong>blur</strong>, etc.</p>
+              </li>
+              <li>
+                <h4>DOM</h4>
+                <p>El DOM (Document Object Model) es una interfaz de programación para documentos HTML y XML. Es una representación estructural del documento, permitiendo modificar su contenido y presentación visual mediante código JavaScript.</p>
+              </li>
+              <li>
+                <h4>Clases</h4>
+                <p>Las clases son plantillas de objetos. Las clases se declaran con la palabra clave <strong>class</strong> y se instancian con la palabra clave <strong>new</strong>.</p>
+              </li>
+              <li>
+                <h4>Modulos</h4>
+                <p>Los módulos son bloques de código que se pueden importar y exportar de otros módulos. Los módulos se declaran con la palabra clave <strong>export</strong> y se importan con la palabra clave <strong>import</strong>.</p>
+              </li>
+              <li>
+                <h4>Fetch</h4>
+                <p>El método <strong>fetch()</strong> nos permite realizar peticiones HTTP y obtener la respuesta del servidor.</p>
+              </li>
+              
+            </ol>
+          </details>
+        </section>
+      </details>
+    </article>
+    <article class="use-strict">
+      <!-- instalar ESLint en VSC si no lo teneis -->
+      <details id="use-strict">
+        <summary>Use Strict</summary>
+        <h2>Use Strict</h2>
+        <p>El modo estricto es una nueva característica de ECMAScript 5 que permite a los desarrolladores escribir código "seguro".</p>
+        <p>Cambia la sintaxis de JavaScript para evitar errores comunes.</p>
+        <p>Evita que se utilicen palabras reservadas como nombres de variables.</p>
+        <p>Evita que se utilicen variables no declaradas.</p>
+        <p>Elimina algunas funciones JavaScript que se consideran inseguras.</p>
+        <p>Evita que se utilicen argumentos duplicados en funciones.</p>
+        <p>Y más...</p>
+        <p>Basicamente, el modo estricto hace que nos salten errores que antes no salían.</p>
+        <p>Para activar el modo estricto, se debe escribir en la primera línea del script 'use strict';</p>
+      </details>
+    </article>
+    <article class='variables'>
+      <details id='variables'>
+        <summary>Variables</summary>
+        <h2>Variables</h2>
+        <section class='porque'>
+          <details id='porqueVariables'>
+            <summary>¿Porque?</summary>
+            <h3>¿Porque usar Variables?</h3>
+            <ul>
+              <li>
+                <p>Se usan para almacenar información que se puede utilizar varias veces en el código.</p>
+              </li>
+              <li>
+                <p>Si tengo un valor y lo uso directamenten en el código, si quiero cambiarlo tengo que buscarlo en todo el código y cambiarlo uno a uno.</p>
+              </li>
+              <li>
+                <p>Si lo guardo en una variable, solo tengo que cambiar el valor de la variable y se cambia en todo el código.</p>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='nombrar'>
+          <details id='nombrar'>
+            <summary>Nomenclatura</summary>
+            <h3>Nomenclatura de variables</h3>
+            <ul>
+              <li>Deben tener un <strong>nombre descriptivo</strong>.</li>
+              <li>No pueden empezar con <strong>números</strong>.</li>
+              <li>Deben empezar con una <strong>letra</strong>, <strong>guion bajo (_)</strong> o <strong>signo de dólar ($)</strong>.</li>
+              <li>Los siguientes caracteres después del primer carácter pueden ser <strong>números(0-9)</strong>, <strong>letras(a-z, A-Z)</strong>, <strong>guion bajo (_)</strong>, <strong>signo de dólar ($)</strong> o la mayoría de las letras <strong>ISO 8859-1</strong> o <strong>Unicode</strong>.</li>
+              <li>No pueden contener <strong>espacios</strong>.</li>
+              <li>No pueden contener <strong>caracteres especiales</strong>.</li>
+              <li>No pueden contener <strong>palabras reservadas</strong>.</li>
+              <li>Se recomienda utilizar <strong>camelCase</strong>.</li>
+              <li>Seran declaradas con <strong>const</strong> si no se van a reasignar.</li>
+              <li>Ser declararan con <strong>let</strong> si se van a reasignar.</li>
+            </ul>
+          </details>
+        </section>
+        <section class='declarar'>
+          <details id='declarar'>
+            <summary>Declaración</summary>
+            <h3>Declarar una variable</h3>
+            <ul>
+              <li>Se utilizan las palabra reservada <strong>var</strong>, <strong>let</strong> o <strong>const</strong>.</li>
+              <li><strong>var</strong>: Esta sintaxis está obsoleta, por tanto, no debemos utilizarla bajo ningún concepto. Sigue funcionando y encontrarás muchos ejemplos de código JavaScript usandola. Pero no la uses 😉.</li>
+              <li><strong>let</strong> y <strong>const</strong> fueron incorporadas en la versión ECMAScript 6 del 2015</li>
+              <li><strong>let</strong>: Esta palabra reservada puede ser usada para declarar una variable que puede sufrir cambios en un futuro. <strong>let edad</strong></li>
+              <li><strong>const</strong>: Sirve para declarar variables que no sufrirán alteración ninguna en ningún momento posterior. Es obligatorio inicializarlas en el momento de su declaración. Si intentamos cambiar el valor de una variable declarada con <strong>const</strong>, nos saltaría un error advirtiendo que no podemos hacerlo. <strong>const nombre='Pedro'</strong></li>
+              <li>Se recomienda utilizar <strong>const</strong> por defecto.</li>
+              <li>Es buena práctica declarar las variables al principio del script.</li>
+              <li>Se pueden declarar varias variables en una misma línea separándolas con comas.</li>
+            </ul>
+          </details>
+        </section>
+        <section class='inicializar'>
+          <details id='inicializar'>
+            <summary>Inicialización</summary>
+            <h3>Inicializar una variable</h3>
+            <ul>
+              <li>Se utiliza el operador <strong>=</strong>.</li>
+              <li>Se le asigna un valor a la variable.</li>
+              <li>Decarar: let myVariable</li>
+              <li>Inicializar: myVariable = 0</li>
+              <li>Se recomienda que si no se sabe el valor que va a tener una variable, se inicialice con el valor <strong>null</strong>.</li>
+            </ul>
+          </details>
+        </section>
+        <section class='declarar-inicializar'>
+          <details id='declarar-inicializar'>
+            <summary>Declarar e inicializar</summary>
+            <h3>Declarar e inicializar una variable</h3>
+            <ul>
+              <li>Es hacer las dos cosas a la vez.</li>
+              <li>let myvariable = 0</li>
+            </ul>
+          </details>
+        </section>
+        <section class='reasignar'>
+          <details id='reasignar'>
+            <summary>Reasignar</summary>
+            <h3>Reasignar una variable</h3>
+            <p>Se utiliza el operador <strong>=</strong>.</p>
+            <p>Se le asigna un nuevo valor a la variable.</p>
+            <code>
+              let myVariable = 0
+              myVariable = 1
+
+            </code>
+          </details>
+        </section>
+      </details>
+    </article>
+    <article class='valores'>
+      <details id='valores'>
+        <summary>Valores</summary>
+        <h2>Valores, Tipos de datos</h2>
+        <section class='primitivos'>
+          <details id='primitivos'>
+            <summary>Primitivos</summary>
+            <h3>Primitivos</h3>
+            <ul>
+              <li>
+                <h4>Number</h4>
+                <p>Se usa para representar números enteros (integers) y números de punto flotante (float)</p>
+                <p>También para valores numéricos especiales: Infinity, -Infinity y NaN (not a number)</p>
+                <p>El 0 es un número con signo, por lo que hay dos ceros: el positivo 0 y el negativo -0 pero tienen el mismo valor.</p>
+              </li>
+              <li>
+                <h4>BigInt</h4>
+                <p>Se usa para representar números enteros de cualquier tamaño.</p>
+                <p>Se escriben añadiendo <strong>n</strong> al final del número.</p>
+                <code>
+                  let myNumber = 1234567890123456789012345678901234567890n
+
+                </code>
+              </li>
+              <li>
+                <h4>String</h4>
+                <p>Se usa para representar datos de texto.</p>
+                <p>Un string puede estar vacío o contener cualquier número de caracteres.</p>
+                <p>Los caracteres pueden ser letras, dígitos, espacios, signos de puntuación, etc.</p>
+                <p>Los strings se escriben entre comillas simples, dobles o template strings.</p>
+              </li>
+              <li>
+                <h4>Boolean</h4>
+                <p>Se usa para representar un valor lógico que solo puede ser <strong>true</strong>(1) o <strong>false</strong>(0).</p>
+              </li>
+              <li>
+                <h4>Null</h4>
+                <p>Se usa para representar un valor nulo.</p>
+                <p>Es un valor especial que no es igual a nada pero al operar con él se convierte en 0.</p>
+                <p>Se emplea cuando se quiere asignar un valor a una variable, pero no se sabe qué valor asignarle.</p>
+              </li>
+              <li>
+                <h4>Undefined</h4>
+                <p>Se usa para representar un valor no definido.</p>
+                <p>Si una variable no tiene ningún valor asignado, su valor es undefined.</p>
+                <p>No se recomienda dejar una variable sin valor, ya que puede dar lugar a errores, tampoco asignarle undefined.</p>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='objetos'>
+          <details id='objetos'>
+            <summary>Objetos</summary>
+            <h3>Objetos</h3>
+            <ul>
+              <li>
+                <h4>Object</h4>
+                <p>Se usa para representar datos estructurados.</p>
+                <p>Un objeto es una colección de propiedades, y una propiedad es una asociación entre un nombre (o clave) y un valor.</p>
+                <p>Los objetos se escriben entre llaves {}.</p>
+                <p>Las propiedades se separan por comas.</p>
+                <p>Las propiedades se escriben como un nombre(clave) seguido de dos puntos y un valor.</p>
+                <p>Los valores pueden ser de cualquier tipo, incluso otros objetos.</p>
+                <p>Si el valor es un string, se escriben entre comillas.</p>
+                <p>Si el nombre de una propiedad es una palabra reservada, se debe escribir entre comillas.</p>
+                <p>Si el nombre de una propiedad y el valor son estrictamente iguales, se puede omitir el valor.</p>
+              </li>
+              <li>
+                <h4>Array</h4>
+                <p>Se usa para representar una lista ordenada de valores.</p>
+                <p>Un array es una colección de valores.</p>
+                <p>Los arrays se escriben entre corchetes [].</p>
+                <p>Los elementos de un array pueden ser de cualquier tipo, incluso otros arrays.</p>
+                <p>Los elementos de un array se separan por comas.</p>
+                <p>Los elementos de un array se numeran, comenzando en 0.</p>
+              </li>
+              <li>
+                <h4>function</h4>
+                <p>Se usa para representar una función.</p>
+                <p>Las funciones se declaran con la palabra clave <strong>function</strong>.</p>
+              </li>
+              <li>
+                <h4>Date</h4>
+                <p>Se usa para representar una fecha y hora.</p>
+                <p>Las fechas se declaran con la palabra clave <strong>new</strong> seguida de <strong>Date</strong>.</p>
+                <p>Un objeto Date se puede asignar a variables, objetos, arrays, etc.</p>
+                <p>Un objeto Date se puede pasar como argumento a una función.</p>
+                <p>Un objeto Date se puede devolver como valor de una función.</p>
+              </li>
+            </ul>
+          </details>
+        </section>
+      </details>
+    </article>
+    <article class='consolo-log'>
+      <details id='console-log'>
+        <summary>console.log()</summary>
+        <h2>console.log()</h2>
+        <p><strong>console</strong> es un objeto que nos permite interactuar con la consola del navegador.</p>
+        <p><strong>log()</strong> es un método del objeto <strong>console</strong> que nos permite mostrar información en la consola del navegador.</p>
+        <p>Es muy útil para <strong>depurar código</strong> (debbugear) que consiste en ir comprobando en cada paso que se está haciendo lo que se quiere.</p>
+        <p>Para mostrar información en la consola, se debe escribir <strong>console.log()</strong> y entre paréntesis lo que se quiere mostrar.</p>
+        <p>Se puede mostrar texto, números, variables, arrays, objetos, etc.</p>
+        <p>Se puede mostrar más de un elemento separándolos con comas.</p>
+        <p>Hasta que aprendais más herramientas vamos a utilizar la consola constantemente para mostrar información.</p>
+      </details>
+    </article>
+    <article class='prompt'>
+      <details id='prompt'>
+        <summary>prompt()</summary>
+        <h2>prompt()</h2>
+        <p><strong>prompt()</strong> es un método que nos permite mostrar un cuadro de diálogo en el navegador para que el usuario introduzca información.</p>
+        <p>Se debe escribir <strong>prompt()</strong> y entre paréntesis el texto que se quiere mostrar.</p>
+        <p>El método <strong>prompt()</strong> devuelve el valor que el usuario ha introducido en el cuadro de diálogo.</p>
+        <p>Se puede guardar en una variable para utilizarlo después.</p>
+      </details>
+    </article>
+    <article class='numbers'>
+      <details id='numbers'>
+        <summary>Números</summary>
+        <h2>Números</h2>
+        <section class="objeto-math">
+          <details id='objeto-math'>
+            <summary>Math</summary>
+            <h3>Objeto Math</h3>
+            <ul>
+              <li>
+                <h4>Math.PI</h4>
+                <p><strong>Math.PI</strong> devuelve el valor de PI.</p>
+                <code>
+                  console.log(Math.PI); //3.141592653589793
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.abs()</h4>
+                <p><strong>Math.abs()</strong> devuelve el valor absoluto.</p>
+                <code>
+                  console.log(Math.abs(-3)); //3
+                  console.log(Math.abs(3)); //3
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.ceil</h4>
+                <p><strong>Math.ceil()</strong> devuelve el entero aproximando hacia arriba.</p>
+                <code>
+                  console.log(Math.ceil(3.5)); //4
+                  console.log(Math.ceil(3.4)); //4
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.floor</h4>
+                <p><strong>Math.floor()</strong> devuelve el entero aproximando hacia abajo.</p>
+                <code>
+                  console.log(Math.floor(3.5)); //3
+                  console.log(Math.floor(3.4)); //3
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.round</h4>
+                <p><strong>Math.round()</strong> devuelve el valor de x redondeado al entero más cercano (0.5 se redondea al entero superior, 0.49 se redondea al entero inferior)</p>
+                <code>
+                  console.log(Math.round(3.5)); //4
+                  console.log(Math.round(3.4)); //3
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.max</h4>
+                <p><strong>Math.max()</strong> devuelve el número más alto de la lista de números indicados.</p>
+                <code>
+                  console.log(Math.max(3, 5, 1, 2, 4)); //5
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.min</h4>
+                <p><strong>Math.min()</strong> devuelve el número más bajo de la lista de números indicados.</p>
+                <code>
+                  console.log(Math.min(3, 5, 1, 2, 4)); //1
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.pow</h4>
+                <p><strong>Math.pow()</strong> devuelve la base elevada al exponente.</p>
+                <code>
+                  console.log(Math.pow(2, 3)); //8
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.sqrt</h4>
+                <p><strong>Math.sqrt()</strong> devuelve la raíz cuadrada del número indicado.</p>
+                <code>
+                  console.log(Math.sqrt(9)); //3
+
+                </code>
+              </li>
+              <li>
+                <h4>Math.random</h4>
+                <p><strong>Math.random()</strong> devuelve un número aleatorio entre 0 y 1.</p>
+                <code>
+                  console.log(Math.random()); //0.123456789
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class="objeto-number">
+          <details id='objeto-number'>
+            <summary>Number</summary>
+            <h3>Objeto Number</h3>
+            <ul>
+              <li>
+                <h4>Number.isInteger</h4>
+                <p><strong>Number.isInteger()</strong> devuelve true si el valor indicado es un número entero.</p>
+                <code>
+                  console.log(Number.isInteger(3)); //true
+                  console.log(Number.isInteger(3.5)); //false
+                  console.log(Number.isInteger('Hola')); //false
+
+                </code>
+              </li>
+              <li>
+                <h4>Number.isFinite</h4>
+                <p><strong>Number.isFinite()</strong> devuelve true si el valor indicado es un número finito.</p>
+                <code>
+                  console.log(Number.isFinite(3)); //true
+                  console.log(Number.isFinite(3.5)); //true
+                  console.log(Number.isFinite('Hola')); //false
+                  console.log(Number.isFinite(Infinity)); //false
+
+                </code>
+              </li>
+              <li>
+                <h4>Number.isNaN</h4>
+                <p><strong>Number.isNaN()</strong> devuelve true si el valor indicado es NaN.</p>
+                <code>
+                  console.log(Number.isNaN(3)); //false
+                  console.log(Number.isNaN('Hola')); //false
+                  console.log(Number.isNaN(NaN)); //true
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='metodos'>
+          <details id='metodosNumbers'>
+            <summary>Métodos</summary>
+            <h3>Métodos</h3>
+            <ul>
+              <li>
+                <h4>parseInt</h4>
+                <p><strong>parseInt()</strong> devuelve un número entero a partir de un string.</p>
+                <p>Si el string no empieza por un número, devuelve NaN.</p>
+                <code>
+                  let a = '12';<br>
+                  console.log(parseInt(a)); //12
+                  console.log(parseInt('Hola')); //NaN
+
+                </code>
+              </li>
+              <li>
+                <h4>parseFloat</h4>
+                <p><strong>parseFloat()</strong> devuelve un número decimal a partir de un string.</p>
+                <p>Si el string no empieza por un número, devuelve NaN.</p>
+                <code>
+                  let a = '12.5';<br>
+                  console.log(parseFloat(a)); //12.5
+                  console.log(parseFloat('Hola')); //NaN
+
+                </code>
+              </li>
+          </details>
+        </section>
+      </details>
+    </article>
+  </main>
+  <script src="/script/script.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <!-- <script src="contextoEjecucion.js"></script> -->
+  <!-- <script src="tablasMultiplicar.js"></script> -->
+  <script src="objetoNumber.js"></script>
+
+</body>

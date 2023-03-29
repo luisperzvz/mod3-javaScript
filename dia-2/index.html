@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>JavaScript</title>
+</head>
+<body>
+  <header>
+    <h1>Semana 4 / Día 2</h1>
+  </header>
+  <main>
+    <!-- string, boolean, null, undefined, operadores, condicionales -->
+    <article class='strings'>
+      <details id='strings'>
+        <summary>Strings</summary>
+        <h2>Strings</h2>
+        <section class='inicialización'>
+          <details id='inicializaciónStrings'>
+            <summary>Inicialización</summary>
+            <h3>Inicialización</h3>
+            <ul>
+              <li>
+                <p>Los strings se inicializan con comillas simples, dobles o backticks(comillas francesas).</p>
+                <code>
+                  let a = 'Hola';
+                  let b = "Hola";
+                  let c = `Hola`;
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='metodos'>
+          <details id='metodosStrings'>
+            <summary>Métodos</summary>
+            <h3>Métodos</h3>
+            <ul>
+              <li>
+                <h4>length</h4>
+                <p><strong>length()</strong> devuelve la longitud del string.</p>
+                <code>
+                  let a = 'Hola';
+                  console.log('La longitud de a es: ' + a.length); //La longitud de a es: 4
+
+                </code>
+              </li>
+              <li>
+                <h4>toUpperCase</h4>
+                <p><strong>toUpperCase()</strong> devuelve el string en mayúsculas.</p>
+                <code>
+                  let a = 'Hola';
+                  console.log(a.toUpperCase()); //HOLA
+
+                </code>
+              </li>
+              <li>
+                <h4>toLowerCase</h4>
+                <p><strong>toLowerCase()</strong> devuelve el string en minúsculas.</p>
+                <code>
+                  let a = 'HOLA';
+                  console.log(a.toLowerCase()); //hola
+
+                </code>
+              </li>
+              <li>
+                <h4>indexOf</h4>
+                <p><strong>indexOf()</strong> devuelve la posición de la primera aparición del string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar desde qué posición empezar a buscar.</p>
+                <p>Si no encuentra el string, devuelve -1.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.indexOf('o')); //1
+                  console.log(a.indexOf('o', 2)); //9
+                  console.log(a.indexOf('z')); //-1
+
+                </code>
+              </li>
+              <li>
+                <h4>lastIndexOf</h4>
+                <p><strong>lastIndexOf()</strong> devuelve la posición de la última aparición del string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar antes de qué posición empezar a buscar.</p>
+                <p>Si no encuentra el string, devuelve -1.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.lastIndexOf('o')); //9
+                  console.log(a.lastIndexOf('o', 8)); //1
+                  console.log(a.lastIndexOf('z')); //-1
+
+                </code>
+              </li>
+              <li>
+                <h4>includes</h4>
+                <p><strong>includes()</strong> devuelve true si el string contiene el string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar desde qué posición empezar a buscar.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.includes('Mundo')); //true
+                  console.log(a.includes('Mundo', 5)); //false
+
+                </code>
+              </li>
+              <li>
+                <h4>startsWith</h4>
+                <p><strong>startsWith()</strong> devuelve true si el string empieza con el string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar desde qué posición empezar a buscar.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.startsWith('Hola')); //true
+                  console.log(a.startsWith('Mundo', 5)); //true
+
+                </code>
+              </li>
+              <li>
+                <h4>endsWith</h4>
+                <p><strong>endsWith()</strong> devuelve true si el string termina con el string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar antes de qué posición empezar a buscar.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.endsWith('Mundo')); //true
+                  console.log(a.endsWith('Hola', 4)); //true
+
+                </code>
+              </li>
+              <li>
+                <h4>repeat</h4>
+                <p><strong>repeat()</strong> devuelve un nuevo string con el string selecionado repetido el número de veces indicado.</p>
+                <code>
+                  let a = 'Hola';
+                  console.log(a.repeat(3)); //HolaHolaHola
+
+                </code>
+              </li>
+              <li>
+                <h4>replace</h4>
+                <p><strong>replace()</strong> devuelve un nuevo string con el string selecionado reemplazado por el string indicado.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.replace('Mundo', 'Mundo!')); //Hola Mundo!
+                  console.log(a.replace('o', 'u')); //Hula Mundo
+
+                </code>
+              </li>
+              <li>
+                <h4>replaceAll</h4>
+                <p><strong>replaceAll()</strong> devuelve un nuevo string con el string selecionado reemplazado por el string indicado en todas las apariciones.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.replaceAll('o', 'u')); //Hula Mundu
+
+                </code>
+              </li>
+              <li>
+                <h4>split</h4>
+                <p><strong>split()</strong> devuelve un array con los elementos del string separados por el string indicado.</p>
+                <p>Se le puede pasar un segundo parámetro para indicar el número máximo de elementos que se devuelven.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.split(' ')); //['Hola', 'Mundo']
+                  console.log(a.split(' ', 1)); //['Hola']
+
+                </code>
+              </li>
+              <li>
+                <h4>slice</h4>
+                <p><strong>slice()</strong> devuelve el string desde la primera posición indicada hasta la segunda, sin incluirla.</p>
+                <p>Si no se indica la posición final, devuelve el string desde la posición indicada hasta el final.</p>
+                <code>
+                  let a = 'Hola Mundo';
+                  console.log(a.slice(5)); //Mundo
+                  console.log(a.slice(5, 8)); //Mun
+
+                </code>
+              </li>
+              <li>
+                <h4>trim</h4>
+                <p><strong>trim()</strong> devuelve un nuevo string sin espacios al principio ni al final.</p>
+                <p><strong>trimStart()</strong> devuelve un nuevo string sin espacios al principio.</p>
+                <p><strong>trimEnd()</strong> devuelve un nuevo string sin espacios al final.</p>
+                <code>
+                  let a = ' Hola Mundo ';
+                  let b = a.trim();
+                  let c = a.trimStart();
+                  let d = a.trimEnd();
+                  console.log(`¿¿${b}??`); // ¿¿Hola Mundo??
+                  console.log(`¿¿${c}??`); // ¿¿Hola Mundo ??
+                  console.log(`¿¿${d}??`); // ¿¿ Hola Mundo??
+
+                </code>
+              </li>
+              <li>
+                <h4>concat</h4>
+                <p><strong>concat()</strong> devuelve un nuevo string con el string indicado añadido al final.</p>
+                <code>
+                  let a = 'Hola';
+                  console.log(a.concat(' Mundo')); //Hola Mundo
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+      </details>
+    </article>
+    <article class='operadores'>
+      <details id="operadores">
+        <summary>Operadores</summary>
+        <h2>Operadores</h2>
+        <section class='aritméticos'>
+          <details id="aritméticos">
+            <summary>Aritméticos</summary>
+            <h3>Operadores aritméticos</h3>
+            <ul>
+              <li>
+                <h4>Suma</h4>
+                <p>Se utiliza para sumar dos valores.</p>
+                <p>Se representa con el símbolo <strong>+</strong>.</p>
+                <code>
+                  let a = 12;
+                  let b = 10;
+                  let result = a+b; //22
+
+                </code>
+              </li>
+              <li>
+                <h4>Resta</h4>
+                <p>Se utiliza para restar dos valores.</p>
+                <p>Se representa con el símbolo <strong>-</strong>.</p>
+                <code>
+                  let a = 12;
+                  let b = 10;
+                  let result = a-b; //2
+
+                </code>
+              </li>
+              <li>
+                <h4>Multiplicación</h4>
+                <p>Se utiliza para multiplicar dos valores.</p>
+                <p>Se representa con el símbolo <strong>*</strong>.</p>
+                <code>
+                  let a = 12;
+                  let b = 10;
+                  let result = a*b; //120
+
+                </code>
+              </li>
+              <li>
+                <h4>División</h4>
+                <p>Se utiliza para dividir dos valores.</p>
+                <p>Se representa con el símbolo <strong>/</strong>.</p>
+                <code>
+                  let a = 12;
+                  let b = 10;
+                  let result = a/b; //1.2
+
+                </code>
+              </li>
+              <li>
+                <h4>Módulo</h4>
+                <p>Se utiliza para obtener el resto entero de la división de dos valores.</p>
+                <p>Se representa con el símbolo <strong>%</strong>.</p>
+                <p>Se puede utilizar para comprobar si un número es par.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let result = a%b; //1
+
+                  let a = 6;
+                  let b = 2;
+                  let result = a%b; //0 (es par)
+
+                </code>
+              </li>
+              <li>
+                <h4>Exponenciación</h4>
+                <p>Se utiliza para elevar un valor a una potencia.</p>
+                <p>Se representa con el símbolo <strong>**</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let result = a**b; //25
+                  
+                </code>
+              </li>
+              <li>
+                <h4>Incremento</h4>
+                <p>Se utiliza para incrementar en 1 el valor de una variable.</p>
+                <p>Se representa con el símbolo <strong>++</strong>.</p>
+                <code>
+                  let a = 5;
+                  console.log(++a); //6 (se incrementa antes de mostrar el valor)
+                  console.log(a++); //6 (se incrementa después de mostrar el valor)
+                  console.log(a); //7 (se muestra el valor incrementado)
+
+                </code>
+              </li>
+              <li>
+                <h4>Decremento</h4>
+                <p>Se utiliza para decrementar en 1 el valor de una variable.</p>
+                <p>Se representa con el símbolo <strong>--</strong>.</p>
+                <code>
+                  let a = 5;
+                  console.log(--a); //4 (se decrementa antes de mostrar el valor)
+                  console.log(a--); //4 (se decrementa después de mostrar el valor)
+                  console.log(a); //3 (se muestra el valor decrementado)
+
+                </code>
+              </li>
+              <li>
+                <h4>Unario</h4>
+
+                <p>Se utiliza para convertir un valor en un número si aún no lo es.</p>
+                <p>Se representa con el símbolo <strong>+</strong> o <strong>-</strong>.</p>
+                <code>
+                  let a = "5";
+                  let b = "5 años"
+                  let c = +a; //5
+                  let d = -a; //-5
+                  let e = +b; //NaN
+                  console.log(typeof a); //string
+                  console.log(typeof b); //string
+                  console.log(typeof c); //number
+                  console.log(typeof d); //number
+                  console.log(typeof e); //number
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='asignación'>
+          <details id="asignación">
+            <summary>Asignación</summary>
+            <h3>Operadores de asignación</h3>
+            <ul>
+              <li>
+                <h4>Asignación simple</h4>
+                <p>Se utiliza para asignar un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>=</strong>.</p>
+                <code>
+                  let a = 5;
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de suma</h4>
+                <p>Se utiliza para sumar un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>+=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a = a + b; //7
+                  a += b; //9
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de resta</h4>
+                <p>Se utiliza para restar un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>-=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a = a - b; //3
+                  a -= b; //1
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de multiplicación</h4>
+                <p>Se utiliza para multiplicar un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>*=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a = a * b; //10
+                  a *= b; //20
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de división</h4>
+                <p>Se utiliza para dividir un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>/=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a = a / b; //2.5
+                  a /= b; //1.25
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de módulo</h4>
+                <p>Se utiliza para obtener el resto entero de la división de un valor a una variable.</p>
+                <p>Se representa con el símbolo <strong>%=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a %= b; //1
+
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de exponenciación</h4>
+                <p>Se utiliza para elevar un valor a una potencia a una variable.</p>
+                <p>Se representa con el símbolo <strong>**=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  a **= b; //25
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='comparación'>
+          <details id="comparación">
+            <summary>Comparación</summary>
+            <h3>Operadores de Comparación</h3>
+            <ul>
+              <li>
+                <h4>Igualdad</h4>
+                <p>Se utiliza para comparar si dos valores son iguales.</p>
+                <p>Se representa con el símbolo <strong>==</strong>.</p>
+                <p>El operador de igualdad convierte los valores a un mismo tipo antes de compararlos.</p>
+                <code>
+                  let a = 5;
+                  let b = "5";
+                  console.log(a == b); //true
+                  console.log(typeof a); //number
+                  console.log(typeof b); //string
+
+                </code>
+              </li>
+              <li>
+                <h4>Desigualdad</h4>
+                <p>Se utiliza para comparar si dos valores son diferentes.</p>
+                <p>Se representa con el símbolo <strong>!=</strong>.</p>
+                <p>El operador de desigualdad convierte los valores a un mismo tipo antes de compararlos.</p>
+                <code>
+                  let a = 5;
+                  let b = "5";
+                  console.log(a != b); //false
+                  console.log(typeof a); //number
+                  console.log(typeof b); //string
+
+                </code>
+              </li>
+              <li>
+                <h4>Estrictamente igual</h4>
+                <p>Se utiliza para comparar si dos valores son iguales y del mismo tipo.</p>
+                <p>Se representa con el símbolo <strong>===</strong>.</p>
+                <p>El operador de igualdad estricta no convierte los valores a un mismo tipo antes de compararlos.</p>
+                <code>
+                  let a = 5;
+                  let b = "5";
+                  console.log(a === b); //false
+                </code>
+              </li>
+              <li>
+                <h4>Estrictamente desigual</h4>
+                <p>Se utiliza para comparar si dos valores son diferentes y/o de diferente tipo.</p>
+                <p>Se representa con el símbolo <strong>!==</strong>.</p>
+                <p>El operador de desigualdad estricta no convierte los valores a un mismo tipo antes de compararlos.</p>
+                <code>
+                  let a = 5;
+                  let b = "5";
+                  console.log(a !== b); //true
+                </code>
+              </li>
+              <l>
+                <h4>Mayor que</h4>
+                <p>Se utiliza para comparar si un valor es mayor que otro.</p>
+                <p>Se representa con el símbolo <strong>></strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  console.log(a > b); //true
+                </code>
+              </li>
+              <li>
+                <h4>Mayor o igual que</h4>
+                <p>Se utiliza para comparar si un valor es mayor o igual que otro.</p>
+                <p>Se representa con el símbolo <strong>>=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  console.log(a >= b); //true
+                </code>
+              </li>
+              <li>
+                <h4>Menor que</h4>
+                <p>Se utiliza para comparar si un valor es menor que otro.</p>
+                <p>Se representa con el símbolo <strong><</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  console.log(a < b); //false
+                </code>
+              </li>
+              <li>
+                <h4>Menor o igual que</h4>
+                <p>Se utiliza para comparar si un valor es menor o igual que otro.</p>
+                <p>Se representa con el símbolo <strong><=</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  console.log(a <= b); //false
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='lógicos'>
+          <details id="lógicos">
+            <summary>Lógicos</summary>
+            <h3>Operadores Lógicos</h3>
+            <ul>
+              <li>
+                <h4>AND</h4>
+                <p>Se utiliza para evaluar si dos o más expresiones son verdaderas.</p>
+                <p>Se representa con el símbolo <strong>&&</strong>.</p>
+                <p>Si una de las expresiones es falsa, el resultado será falso.</p>
+                <p>Si todas las expresiones son verdaderas, el resultado será verdadero.</p>
+                <p>Si una de las expresiones es falsa, el resto de las expresiones posteriores no se evalúan.</p>
+                <p>Se puede usar para devolver un valor alternativo.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let c 
+                  console.log(a > 0 && b > 0); //true
+                  console.log(a > 0 && b < 0); //false
+                  console.log(a<0 && b > 0); //false
+                  console.log(a && 'Hola'); //Hola
+                  console.log(a && c); //undefined
+                  console.log(a<0 && c); //false
+                </code>
+              </li>
+              <li>
+                <h4>OR</h4>
+                <p>Se utiliza para evaluar si dos o más expresiones son verdaderas.</p>
+                <p>Se representa con el símbolo <strong>||</strong>.</p>
+                <p>Si una de las expresiones es verdadera, el resultado será verdadero.</p>
+                <p>Si todas las expresiones son falsas, el resultado será falso.</p>
+                <p>Si una de las expresiones es verdadera, el resto de las expresiones posteriores no se evalúan.</p>
+                <p>Se puede usar para devolver un valor alternativo.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let c 
+                  console.log(a > 0 || b > 0); //true
+                  console.log(a > 0 || b < 0); //true
+                  console.log(a<0 || b > 0); //true
+                  console.log(a || 'Hola'); //5
+                  console.log(c || 'Hola'); //Hola
+                </code>
+              </li>
+              <li>
+                <h4>NOT</h4>
+                <p>Se utiliza para invertir el valor de una expresión.</p>
+                <p>Se representa con el símbolo <strong>!</strong>.</p>
+                <p>Si la expresión es verdadera, el resultado será falso.</p>
+                <p>Si la expresión es falsa, el resultado será verdadero.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  console.log(!(a>b)); //false
+                  console.log(!(a=b)); //true
+                </code>
+              </li>
+              <li>
+                <h4>??</h4>
+                <p>Se llama <strong>Nullish Coalescing</strong>(<small>Coalescente nulo</small>).</p>
+                <p>Se utiliza para devolver el primer valor que no sea <strong>null</strong> o <strong>undefined</strong>.</p>
+                <p>Se representa con el símbolo <strong>??</strong>.</p>
+                <p>Si el primer valor es <strong>null</strong> o <strong>undefined</strong>, el resultado será el segundo valor.</p>
+                <p>Si el primer valor no es <strong>null</strong> o <strong>undefined</strong>, el resultado será el primer valor.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let c 
+                  console.log(a ?? b); //5
+                  console.log(c ?? b); //2
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='cadena'>
+          <details id="cadena">
+            <summary>Cadena</summary>
+            <h3>Operadores de Cadena</h3>
+            <ul>
+              <li>
+                <h4>Concatenación</h4>
+                <p>Se utiliza para unir dos cadenas de texto.</p>
+                <p>Se representa con el símbolo <strong>+</strong>.</p>
+                <code>
+                  let a = "Hola";
+                  let b = "Mundo";
+                  let c = '3';
+                  let d = 4;
+                  let result = a + b; //"HolaMundo"
+                  let result2 = c + d; //"34"
+                </code>
+              </li>
+              <li>
+                <h4>Asignación de concatenación</h4>
+                <p>Se utiliza para unir dos cadenas de texto a una variable.</p>
+                <p>Se representa con el símbolo <strong>+=</strong>.</p>
+                <code>
+                  let a = "Hola";
+                  let b = "Mundo";
+                  let c = '3';
+                  let d = 4;
+                  a += b; //"HolaMundo"
+                  c += d; //"34"
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='ternario'>
+          <details id="ternario">
+            <summary>Ternario</summary>
+            <h3>Operadores de Condición Ternaria</h3>
+            <ul>
+              <li>
+                <h4>Condición Ternaria</h4>
+                <p>Se utiliza para evaluar una condición y devolver un valor.</p>
+                <p>Se representa con el símbolo <strong>?</strong> y <strong>:</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+                  let result = a > b ? "a es mayor que b" : "a es menor que b"; //"a es mayor que b"
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class="delete">
+          <details id="delete">
+            <summary>Delete</summary>
+            <h3>Operador Delete</h3>
+            <ul>
+              <li>
+                <h4>Delete</h4>
+                <p>Se utiliza para eliminar una propiedad de un objeto.</p>
+                <p>Se representa con la palabra <strong>delete</strong>.</p>
+                <code>
+                  let person = {
+                    name: "John",
+                    age: 30,
+                    city: "New York"
+                  };
+                  delete person.age;
+                  console.log(person); //{name: "John", city: "New York"}
+                  console.log(person.age); //undefined
+                  console.log(delete person.city); //true  
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+      </details>
+    </article>
+    <article class="conditionals">
+      <details id='conditionals'>
+        <summary>Condicionales</summary>
+        <h2>Condicionales</h2>
+        <section class='if-elseIf-else'>
+          <details id='if-elseIf-else'>
+            <summary>if, else if, else</summary>
+            <h3>if, else if, else</h3>
+            <ul>
+              <li>
+                <h4>if</h4>
+                <p>Se utiliza para ejecutar un bloque de código si una condición es verdadera.</p>
+                <p>Se representa con la palabra <strong>if</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+
+                  if (a > b) {
+                    console.log("a es mayor que b");
+                  }
+
+                  a=2;
+
+                  
+
+                </code>
+              </li>
+              <li>
+                <h4>if, else</h4>
+                <p>Se utiliza para ejecutar un bloque de código si una condición es verdadera, y otro bloque de código si la condición es falsa.</p>
+                <p>Se representa con las palabras <strong>if</strong> y <strong>else</strong>.</p>
+                <code>
+                  let a = 5;
+                  let b = 2;
+
+                  if (a > b) {
+                    console.log("a es mayor que b");
+                  } else {
+                    console.log("a es menor que b");
+                  }
+
+                </code>
+              </li>
+              <li>
+                <h4>if, else if, else</h4>
+                <p>Se utiliza para ejecutar un bloque de código en función de múltiples condiciones.</p>
+                <p>Se representa con las palabras <strong>if</strong>, <strong>else if</strong> y <strong>else</strong>.</p>
+                <p>Se pueden encadenar tantos <strong>else if</strong> como se necesiten.</p>
+
+                <code>
+                  let edad = 18;
+
+                  if (edad < 18) {
+                    console.log("Eres menor de edad");
+                  } else if (edad >= 18 && edad < 65) {
+                    console.log("Eres mayor de edad");
+                  } else {
+                    console.log("Eres jubilado");
+                  }
+
+                  if (edad < 18) {
+                    console.log("Eres menor de edad");
+                  }
+
+                  if (edad >= 18 && edad < 65) {
+                    console.log("Eres mayor de edad");
+                  }
+
+                  if (edad >= 65) {
+                    console.log("Eres jubilado");
+                  }
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section class='switch'>
+          <details id='switch'>
+            <summary>switch</summary>
+            <h3>switch</h3>
+            <ul>
+              <li>
+                <h4>switch</h4>
+                <p>Se utiliza para ejecutar un bloque de código en función de varios casos.</p>
+                <p>Se representa con la palabra <strong>switch</strong>.</p>
+                <p>Se pueden encadenar tantos <strong>case</strong> como se necesiten.</p>
+                <p>Se puede utilizar la palabra <strong>default</strong> para ejecutar un bloque de código si ninguna de las condiciones se cumple.</p>
+                <p>Se ultiliza la palabra <strong>break</strong> para romper cada caso para que no siga ejecutando las instrucciones.</p>
+                <p>Si usamos <strong>switch</strong> dentro de una función, se puede sustituir la palabra <strong>break</strong> por <strong>return</strong>.</p>
+                <code>
+                  let edad = 18;
+
+                  switch (edad) {
+                    case 18:
+                      console.log("Eres mayor de edad");
+                      break; //Importante romper cada caso para que no siga ejecutando las instrucciones 
+                    case 65:
+                      console.log("Eres jubilado");
+                      break;
+                    default:
+                      console.log("No se ha encontrado ninguna coincidencia");
+                  }
+
+                </code>
+              </li>
+            </ul>
+          </details>
+        </section>
+
+      </details>
+    </article>
+  </main>
+  <script src="/script/script.js"></script>
+  <!-- <script src="/repaso/repaso.js"></script> -->
+  <!-- <script src="string.js"></script> -->
+  <script src="ejercicios.js"></script>
+  <script src="metodoEscapeStrings.js"></script>
+</body>
+</html>
